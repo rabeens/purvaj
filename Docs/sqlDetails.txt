@@ -1,8 +1,74 @@
-Create Documents for Backend for Tables.
+DatabaseName
+**************
+PURVAJ
+CREATE DATABASE IF NOT EXISTS PURVAJ;
+use PURVAJ;
 
-User
-Roles
-Dashboard
+Tables
+
+DATA
+*****
+Id int,
+ParentId int,
+Name varchar(255),
+Attributes JSON,
+CreatedBy int(userId),
+CreatedAt datetime,
+IsApproved Bool DEFAULT 0
+
+ATTRIBUTES
+*********
+AttributeId int
+AttributeaName varchar(255),
+AttributeType varchar(255),
+IsRequired bool
+
+USER
+*****
+UserId int
+UserName varchar(255),
+Password varchar(255),
+UserRoleId int,
+CreatedBy int,
+CreatedAt datetime
 
 
-#Feel Free to update :)
+ROLES
+*****
+RoleId int,
+RoleName varchar(255)
+
+
+DASHBOARD
+***********
+DashboardId int,
+DashboardName varchar(255),
+NodeId int,
+PreLimit int,
+PostLimit int,
+TTL int(minutes)
+CreatedBy int,
+CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+DASHBOARDCACHE
+***************
+DashboardId int,
+Data text,
+CachedAt datetime
+
+CHANGEREQUEST
+******************
+RequestId int,
+PreviousData JSON,
+UpdatedData JSON.
+RequestedBy int,
+RequestedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+
+CHANGENODES
+******************
+RequestId int,
+NodeId int,
+RequestedBy int,
+RequestedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
